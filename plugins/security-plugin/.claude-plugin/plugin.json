@@ -1,0 +1,12 @@
+{
+  "name": "security-plugin",
+  "version": "1.0.0",
+  "description": "Security guards and bash command logging for Claude Code sessions",
+  "author": {
+    "name": "Simform Solutions",
+    "email": "krunal.patel@simformsolutions.com"
+  },
+  "license": "MIT",
+  "keywords": ["security", "logging", "devops", "hooks"],
+  "skills": "./skills/"
+}

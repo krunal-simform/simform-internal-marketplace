@@ -1,0 +1,12 @@
+{
+  "name": "simp-utils",
+  "version": "1.0.0",
+  "description": "Developer utilities — code formatting checks and PR summary generation",
+  "author": {
+    "name": "Simform Solutions",
+    "email": "krunal.patel@simformsolutions.com"
+  },
+  "license": "MIT",
+  "keywords": ["utilities", "code-quality", "formatting", "pr"],
+  "skills": "./skills/"
+}

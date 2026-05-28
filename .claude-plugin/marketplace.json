@@ -1,0 +1,20 @@
+{
+  "name": "simform-internal",
+  "description": "Internal Claude Code plugin marketplace for Simform Solutions",
+  "owner": {
+    "name": "Simform Solutions",
+    "email": "krunal.patel@simformsolutions.com"
+  },
+  "plugins": [
+    {
+      "name": "simp-utils",
+      "source": "./plugins/simp-utils",
+      "description": "Developer utilities — code formatting checks and PR summary generation"
+    },
+    {
+      "name": "security-plugin",
+      "source": "./plugins/security-plugin",
+      "description": "Security vulnerability scanning for code snippets"
+    }
+  ]
+}
