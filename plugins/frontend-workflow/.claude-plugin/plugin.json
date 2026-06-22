@@ -1,0 +1,16 @@
+{
+  "name": "frontend-workflow",
+  "displayName": "Frontend Workflow",
+  "version": "1.0.0",
+  "description": "End-to-end React + TypeScript ticket workflow: Jira → Figma → plan → implement → UI verify → review → commit → PR, with deterministic git/format guards and bundled MCP servers",
+  "author": {
+    "name": "Simform Solutions",
+    "email": "krunal.patel@simformsolutions.com"
+  },
+  "license": "MIT",
+  "keywords": ["frontend", "react", "typescript", "workflow", "jira", "figma", "accessibility", "testing", "hooks"],
+  "skills": "./skills/",
+  "agents": ["./agents/code-reviewer.md", "./agents/ui-verifier.md"],
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json"
+}

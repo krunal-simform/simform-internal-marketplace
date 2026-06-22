@@ -15,6 +15,11 @@
       "name": "security-plugin",
       "source": "./plugins/security-plugin",
       "description": "Security vulnerability scanning for code snippets"
+    },
+    {
+      "name": "frontend-workflow",
+      "source": "./plugins/frontend-workflow",
+      "description": "End-to-end React + TypeScript ticket workflow (Jira → Figma → plan → implement → UI verify → review → PR) with git/format guard hooks and bundled MCP servers"
     }
   ]
 }

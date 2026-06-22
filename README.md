@@ -14,6 +14,7 @@ pointing Claude Code at the plugin directory.
 |--------|---------|-------------|
 | [security-plugin](plugins/security-plugin/) | 1.0.0 | Security guards & bash command logging |
 | [simp-utils](plugins/simp-utils/) | 1.0.0 | Developer utilities — code formatting checks and PR summary generation |
+| [frontend-workflow](plugins/frontend-workflow/) | 1.0.0 | End-to-end React + TypeScript ticket workflow (Jira → Figma → plan → implement → UI verify → review → PR) with git/format guard hooks and bundled MCP servers |
 
 ## Repository layout
 
@@ -32,14 +33,25 @@ simform-internal-marketplace/
     │       └── secutiry-audit/
     │           ├── SKILL.md
     │           └── references/
-    └── simp-utils/           # Developer utilities
+    ├── simp-utils/           # Developer utilities
+    │   ├── .claude-plugin/
+    │   ├── README.md
+    │   ├── CHANGELOG.md
+    │   ├── plugin.json
+    │   └── skills/
+    │       └── pr-summary/
+    │           └── SKILL.md
+    └── frontend-workflow/    # React + TypeScript ticket workflow
         ├── .claude-plugin/
+        │   └── plugin.json
         ├── README.md
         ├── CHANGELOG.md
-        ├── plugin.json
-        └── skills/
-            └── pr-summary/
-                └── SKILL.md
+        ├── .mcp.json         # Atlassian, Figma, Playwright, GitHub MCP servers
+        ├── hooks/            # hooks.json + format-on-edit.sh, guard-git.sh
+        ├── agents/           # ui-verifier, code-reviewer subagents
+        ├── rules/            # design/a11y/testing/security/git standards
+        ├── skills/           # frontend-task orchestrator + 6 supporting skills
+        └── setup/            # permissions, CLAUDE.md, PR template to copy into the repo
 ```
 
 ## Installing a plugin
