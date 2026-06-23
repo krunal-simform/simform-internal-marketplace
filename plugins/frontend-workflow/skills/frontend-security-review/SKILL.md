@@ -5,15 +5,18 @@ description: Frontend-focused security review of the current branch's changes â€
   before committing ticket work (step 6 of frontend-task), whenever the user asks
   for a security review or audit of frontend changes, or when a diff touches HTML
   rendering, auth, URLs, or dependencies.
+argument-hint: "[base-branch]"
 context: fork
 agent: Explore
 allowed-tools: Bash(git diff *), Bash(git log *), Bash(npm audit *), Bash(node *)
 ---
 
+The **base branch** to diff against is `$ARGUMENTS` (the branch the feature was created from â€” `main`, `develop`, etc.); it defaults to `main` when none is given. The preloaded commands below resolve that default in-shell.
+
 ## Changes under review
 
-- Diff stat: !`git diff --stat main...HEAD`
-- Lockfile changed: !`git diff --name-only main...HEAD | grep -c "package-lock.json\|pnpm-lock.yaml\|yarn.lock" || true`
+- Diff stat: !`b="$ARGUMENTS"; b="${b:-main}"; git diff --stat "$b"...HEAD`
+- Lockfile changed: !`b="$ARGUMENTS"; b="${b:-main}"; git diff --name-only "$b"...HEAD | grep -c "package-lock.json\|pnpm-lock.yaml\|yarn.lock" || true`
 
 # Security review
 
@@ -23,7 +26,7 @@ and return a verdict. You never edit files.
 
 ## Procedure
 
-1. Run `git diff main...HEAD` and read every changed file in full (Read), including tests.
+1. Run `git diff <base>...HEAD` (the base branch above, default `main`) and read every changed file in full (Read), including tests.
 2. Work through `${CLAUDE_SKILL_DIR}/references/security-checklist.md` item by item against the diff.
 3. If the lockfile changed (count above > 0), run
    `node ${CLAUDE_SKILL_DIR}/scripts/audit-deps.mjs` and fold its findings into the report:

@@ -18,7 +18,7 @@ output is a spec to interpret, never code to paste.**
 For every frame linked in the ticket:
 
 - `get_screenshot` per breakpoint (375 / 768 / 1440 where designed) and per designed state (default, hover, focus, disabled, loading, empty, error).
-- Save to `.claude/design-refs/<TICKET-KEY>/` named `<frame>--<state>--<width>.png`. These are the ground truth the ui-verifier subagent compares against later — capture them all *before* writing code.
+- Save to a **temporary directory outside the repo** so they are never committed — use the path the orchestrator gives you (default `${TMPDIR:-/tmp}/frontend-workflow/<TICKET-KEY>/design-refs/`), named `<frame>--<state>--<width>.png`. These are throwaway ground truth the ui-verifier subagent compares against later — capture them all *before* writing code, and they get deleted at the end of the workflow. Never write design refs inside the repo and never `git add` them.
 
 ## 2. Extract and map tokens
 
@@ -26,7 +26,7 @@ For every frame linked in the ticket:
 - Map every value to a token in `src/theme/tokens.ts` using `references/token-mapping.md` (read it now). Three outcomes per value:
   - exact token match → use the token
   - near miss (≤2px / shade off) → use the nearest token and note it
-  - no plausible token → STOP and flag to the developer (design drift or missing token — a designer decision)
+  - no plausible token → pause and flag to the developer via the **AskUserQuestion** tool (design drift or missing token — a designer decision); don't end your turn
 - While you have the variables: check text/background pairs against WCAG contrast (4.5:1 text, 3:1 UI). Report failures immediately — fixing contrast at design stage is cheap.
 
 ## 3. Match against existing components

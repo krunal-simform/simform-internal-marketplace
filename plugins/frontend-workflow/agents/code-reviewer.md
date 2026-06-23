@@ -15,7 +15,7 @@ files; you report findings.
 
 ## Procedure
 
-1. `git diff main...HEAD` (and `git diff main...HEAD --stat` for shape). Read every changed file in full, plus enough surrounding code to judge fit.
+1. Diff against the **base branch** named in your task prompt (the branch this feature was created from — it may be `main`, `develop`, or anything else; default to `main` if none is given): `git diff <base>...HEAD` (and `git diff <base>...HEAD --stat` for shape). Read every changed file in full, plus enough surrounding code to judge fit.
 2. Read the ticket's acceptance criteria from your task prompt and map each one to where the diff satisfies it — and to the test that proves it.
 
 ## Checklist

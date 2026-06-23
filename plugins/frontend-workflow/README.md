@@ -71,8 +71,15 @@ claude
 /frontend-task PROJ-123
 ```
 
-The orchestrator stops for your approval after presenting the plan (step 3) — nothing is
-edited before that. To handle review feedback or red CI on an open PR:
+The feature branch is created from **whatever branch is currently checked out** (it doesn't
+have to be `main`) — the orchestrator tells you which base branch it will branch from before
+starting. At every gate (plan approval, missing AC/Figma, repeated UI-verify failures, PR
+now-or-later) it asks you interactively via Claude's question prompt and waits on your choice
+rather than ending the session — nothing is edited before you approve the plan (step 3).
+Figma reference screenshots are written to a temporary directory outside the repo and deleted
+when the workflow finishes, so they are never committed.
+
+To handle review feedback or red CI on an open PR:
 
 ```
 /address-pr-feedback 456

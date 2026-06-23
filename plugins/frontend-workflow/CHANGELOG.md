@@ -3,6 +3,23 @@
 All notable changes to this plugin follow [Keep a Changelog](https://keepachangelog.com/)
 and [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] — 2026-06-23
+
+### Changed
+- **Any base branch.** The workflow no longer requires starting on `main`. The
+  feature branch is created from whatever branch is checked out, and the
+  orchestrator announces *"a new branch will be created from `<branch-name>`"*
+  up front. `code-reviewer` and `frontend-security-review` now diff against that
+  base branch (passed in / defaulting to `main`) instead of a hardcoded `main`.
+- **Temporary test screenshots.** Figma reference screenshots are captured into a
+  temp directory outside the repo (`${TMPDIR:-/tmp}/frontend-workflow/<KEY>/design-refs/`)
+  instead of `.claude/design-refs/`, and are deleted in the final step — they are
+  never committed. `figma-to-code` and `ui-verifier` updated to use the temp path.
+- **Interactive gates.** Workflow gates (dirty tree, missing AC/Figma, plan
+  approval, 3 failed UI-verify rounds, PR now-or-later, unmappable design token)
+  now use the **AskUserQuestion** tool to ask the developer and continue on their
+  answer, instead of ending the turn.
+
 ## [1.0.0] — 2026-06-22
 
 ### Added

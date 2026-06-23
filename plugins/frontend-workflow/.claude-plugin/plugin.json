@@ -1,7 +1,7 @@
 {
   "name": "frontend-workflow",
   "displayName": "Frontend Workflow",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "End-to-end React + TypeScript ticket workflow: Jira → Figma → plan → implement → UI verify → review → commit → PR, with deterministic git/format guards and bundled MCP servers",
   "author": {
     "name": "Simform Solutions",

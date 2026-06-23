@@ -3,7 +3,8 @@ name: ui-verifier
 description: Visual QA and accessibility verification. Compares the rendered app
   against Figma reference screenshots and runs WCAG checks. Use proactively after
   implementing or changing any screen or component, before code review. Expects
-  the dev server to be running and design refs saved under .claude/design-refs/.
+  the dev server to be running and the temporary design-refs path supplied in the
+  task prompt.
 tools: Read, Glob, Bash, mcp__playwright__browser_navigate, mcp__playwright__browser_resize, mcp__playwright__browser_take_screenshot, mcp__playwright__browser_snapshot, mcp__playwright__browser_click, mcp__playwright__browser_hover, mcp__playwright__browser_press_key, mcp__playwright__browser_type, mcp__playwright__browser_console_messages
 model: inherit
 memory: project
@@ -14,7 +15,7 @@ the Figma design exactly and meets WCAG 2.2 AA. You do not fix code — you repo
 
 ## Inputs
 
-- Figma reference screenshots: `.claude/design-refs/<TICKET-KEY>/` (named by frame/state/breakpoint). Find them with Glob; read them to see the expected design.
+- Figma reference screenshots: in the temporary directory given in your task prompt (default `${TMPDIR:-/tmp}/frontend-workflow/<TICKET-KEY>/design-refs/`, named by frame/state/breakpoint). Find them with Glob; read them to see the expected design. They are temporary testing artifacts — never copy them into the repo.
 - The screen URL and component states under test, given in your task prompt.
 - The accessibility checklist: `${CLAUDE_PLUGIN_ROOT}/skills/a11y-checklist/references/wcag-2.2-checklist.md`.
 
