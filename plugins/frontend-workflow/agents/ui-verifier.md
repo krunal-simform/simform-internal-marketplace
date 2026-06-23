@@ -5,7 +5,7 @@ description: Visual QA and accessibility verification. Compares the rendered app
   implementing or changing any screen or component, before code review. Expects
   the dev server to be running and the temporary design-refs path supplied in the
   task prompt.
-tools: Read, Glob, Bash, mcp__playwright__browser_navigate, mcp__playwright__browser_resize, mcp__playwright__browser_take_screenshot, mcp__playwright__browser_snapshot, mcp__playwright__browser_click, mcp__playwright__browser_hover, mcp__playwright__browser_press_key, mcp__playwright__browser_type, mcp__playwright__browser_console_messages
+tools: Read, Glob, Bash, mcp__plugin_frontend-workflow_playwright__browser_navigate, mcp__plugin_frontend-workflow_playwright__browser_resize, mcp__plugin_frontend-workflow_playwright__browser_take_screenshot, mcp__plugin_frontend-workflow_playwright__browser_snapshot, mcp__plugin_frontend-workflow_playwright__browser_click, mcp__plugin_frontend-workflow_playwright__browser_hover, mcp__plugin_frontend-workflow_playwright__browser_press_key, mcp__plugin_frontend-workflow_playwright__browser_type, mcp__plugin_frontend-workflow_playwright__browser_console_messages
 model: inherit
 memory: project
 ---

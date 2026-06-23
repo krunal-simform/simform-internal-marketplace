@@ -48,7 +48,7 @@ ticket through the full lifecycle — **Jira → Figma → plan → implement �
 4. **Connect MCP servers** (first run prompts approval/OAuth where needed):
    - Atlassian + GitHub + Playwright load from the bundled `.mcp.json` — approve when Claude Code asks
    - Figma: open the Figma **desktop** app → Preferences → enable the **Dev Mode MCP server** (serves `http://127.0.0.1:3845/mcp`)
-   - Verify with `/mcp`; if your Playwright tool names differ, pin the exact `mcp__playwright__*` names in `agents/ui-verifier.md`
+   - Verify with `/mcp`. The bundled Playwright server is plugin-namespaced, so its tools are `mcp__plugin_frontend-workflow_playwright__browser_*` — that's what `agents/ui-verifier.md` pins. If you instead supply Playwright from a *different* source (a standalone `playwright` plugin → `mcp__plugin_playwright_playwright__browser_*`, or a project/user `.mcp.json` → `mcp__playwright__browser_*`), update the `tools:` line in `agents/ui-verifier.md` to match the exact names `/mcp` shows.
 
 ### Project-side setup (things a plugin cannot inject for you)
 

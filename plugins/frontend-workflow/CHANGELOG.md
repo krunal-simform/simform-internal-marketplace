@@ -5,6 +5,14 @@ and [Semantic Versioning](https://semver.org/).
 
 ## [1.1.0] — 2026-06-23
 
+### Fixed
+- **Playwright tool names in `ui-verifier`.** The agent referenced the bundled
+  Playwright server as `mcp__playwright__browser_*`, but a plugin-bundled MCP
+  server is namespaced as `mcp__plugin_<plugin>_<server>__`. Corrected the
+  `tools:` list to `mcp__plugin_frontend-workflow_playwright__browser_*` so the
+  subagent actually receives its browser tools, and clarified the README note on
+  matching names to whatever `/mcp` reports.
+
 ### Changed
 - **Any base branch.** The workflow no longer requires starting on `main`. The
   feature branch is created from whatever branch is checked out, and the
